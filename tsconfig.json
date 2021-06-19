@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es5",
+        "jsx": "react",
+        "strict": true,
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "moduleResolution": "classic",
+        "strictNullChecks": false,
+        "baseUrl": ".",
+        "paths": {
+            "business": ["src/business"],
+            "components": ["src/components"]
+        }
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
