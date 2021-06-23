@@ -22,12 +22,21 @@ module.exports = {
         port: 9000,
         open: 'Google Chrome'
     },
+    devtool: 'source-map',
     module: {
         rules: [
             {
                 test: /\.(ts|tsx)?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /\.less?$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'less-loader'
+                ]
             }
         ]
     },

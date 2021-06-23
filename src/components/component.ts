@@ -2,10 +2,10 @@ import $ from 'jquery';
 import { ReactElement } from 'react';
 import ReactDOM from 'react-dom';
 
-interface Props<Config> {
+export interface Props<Config> {
     parentId: string
-    config: Config,
-    hooks: Hooks
+    config?: Config,
+    hooks?: Hooks
 }
 
 export interface Hooks {
@@ -77,11 +77,11 @@ export default class Component<Config> {
      * 执行钩子
      * @param hookName 
      */
-    public executeHooks(hookName: string, params: any) {
+    public executeHooks(hookName: string, params: any): any {
         const targetHook = this.hooks[hookName];
         if (typeof targetHook !== 'function') {
             throw new Error(`not found hook: ${hookName}`)
         }
-        targetHook(params);
+        return targetHook(params);
     }
 }

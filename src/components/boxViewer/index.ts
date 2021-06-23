@@ -1,27 +1,28 @@
 import { ReactInstance } from "react";
-import Component, { Hooks } from "../component";
-import createBoxs from './box';
+import Component from "../component";
+import createBoxs from './boxs/index';
 
-export interface boxViewerProps {
-    parentId: string,
-    config: Config,
-    hooks: Hooks
-}
+import {
+    boxViewerProps,
+    boxViewerConfig
+} from './index.d';
 
-interface Config {
-    boxMatrix: string // '2X4'
-    boxSize: [number, number]
-}
-
-export default class BoxViewer extends Component<Config> {
+export default class BoxViewer extends Component<boxViewerConfig> {
     name: string;
     reactInstance: ReactInstance
     constructor(props: boxViewerProps) {
         super(props);
         this.name = 'box-viewer';
+
+        this.config = props.config ?? {
+            boxMatrix: '3X3',
+            boxSize: [300, 300]
+        }
+
+        this.init();
     }
 
     public init() {
-        this.reactInstance = createBoxs(this, this.$parent)
+        this.reactInstance = createBoxs(this)
     }
 }
